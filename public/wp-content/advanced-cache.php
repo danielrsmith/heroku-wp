@@ -12,16 +12,16 @@ function batcache_cancel() {
 class batcache {
 	// This is the base configuration. You can edit these variables or move them into your wp-config.php file.
 	var $max_age =  300; // Expire batcache items aged this many seconds (zero to disable batcache)
-	
+
 	var $remote  =    0; // Zero disables sending buffers to remote datacenters (req/sec is never sent)
-	
+
 	var $times   =    2; // Only batcache a page after it is accessed this many times... (two or more)
 	var $seconds =  120; // ...in this many seconds (zero to ignore this and use batcache immediately)
-	
+
 	var $group   = 'batcache'; // Name of memcached group. You can simulate a cache flush by changing this.
-	
+
 	var $unique  = array(); // If you conditionally serve different content, put the variable values here.
-	
+
 	var $headers = array(); // Add headers here. These will be sent with every response from the cache.
 
 	var $cache_redirects = false; // Set true to enable redirect caching.
@@ -30,7 +30,7 @@ class batcache {
 
 	var $uncached_headers = array('transfer-encoding'); // These headers will never be cached. Apply strtolower.
 
-	var $debug        = false; // Set false to hide the batcache info <!-- comment -->
+	var $debug        = true; // Set false to hide the batcache info <!-- comment -->
 	var $debug_header = true; // Set false to hide the batcache info header
 
 	var $cache_control = true; // Set false to disable Last-Modified and Cache-Control headers
@@ -395,4 +395,3 @@ $wp_filter['wp_redirect_status'][10]['batcache'] = array( 'function' => array(&$
 ob_start(array(&$batcache, 'ob'));
 
 // It is safer to omit the final PHP closing tag.
-
