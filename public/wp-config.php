@@ -80,6 +80,10 @@ if ( isset( $_ENV["CLEARDB_SSL"] ) && 'ON' == $_ENV["CLEARDB_SSL"] ) {
 	define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_COMPRESS                    );
 }
 
+// Set SendGrid
+define('SENDGRID_USERNAME', $_ENV["SENDGRID_USERNAME"]);
+define('SENDGRID_PASSWORD', $_ENV["SENDGRID_PASSWORD"]);
+
 /**#@-*/
 
 /**#@+
